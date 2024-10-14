@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <form action="/hello" method="post">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name" required value="{{ name }}">
+        {% if name %}
+            <p>{{ message }}</p>
+            <label for="cases">Choose an option:</label>
+            <select id="cases" name="case_option">
+                <option value="no_change">Default</option>
+                <option value="lower_case" {% if case_option == 'lower_case' %}selected{% endif %}>Lowercase</option>
+                <option value="upper_case" {% if case_option == 'upper_case' %}selected{% endif %}>Uppercase</option>
+                <option value="invert_case" {% if case_option == 'invert_case' %}selected{% endif %}>Invertcase</option>
+            </select>
+        {% endif %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
